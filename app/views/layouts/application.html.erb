@@ -2,26 +2,27 @@
 <html>
 <head>
   <title>Shoutr</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+ <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <nav>
+<body id="<%= [controller_name, action_name].join("-") %>">
+<header class="top-bar">
 	  <% if signed_in? %>
-      Is <%= current_user.username %> shouting
+      Welcome <%= current_user.username %>
       <%= link_to "Sign out", session_path, method: :delete %>
-      ---Check out other people's shouts 
     
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Sign in", new_session_path %>
     <% end %>
-  </nav>
+  </header>
 
-	
+<div id="main-content">
 
 <%= yield %>
+
+</div>
 
 </body>
 </html>
