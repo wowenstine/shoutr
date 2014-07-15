@@ -1,14 +1,18 @@
 
-<div id="main-content">
-<h1>Dashboardt</h1> 
-
 <%= form_for(@shout) do |form| %>
  <%= form.text_field :body %>
-  <%= form.submit "SHOUT" %>
+ <%= form.submit "SHOUT" %>
 <% end %>
 
+<h1>Dashboardt</h1> 
+
+<h3> Following </h3>
+<%= render current_user.followed_users %>
+
+<h3> Followed by </h3>
+<%= render current_user.followers %>
+
 <div id="timeline">
-Shouts:
 <%= render @shouts %>
-</div>
+
 </div>

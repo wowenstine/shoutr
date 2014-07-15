@@ -7,10 +7,16 @@ class User < ActiveRecord::Base
   #set up for following relationships
 
   has_many :followed_user_relationships,
-  			class_name: "FollowingRelationship", #have to define table separately to confusion caused by two has_many's pointing to same place- I think
+  			class_name: "FollowingRelationship", 
   			foreign_key: :follower_id
 
   has_many :followed_users, through: :followed_user_relationships
+
+   has_many :followers_relationships,
+        class_name: "FollowingRelationship", 
+        foreign_key: :followed_user_id
+
+  has_many :followers, through: :followers_relationships
 
   def to_param  #overrides default so we could look to username's directly instead of id number
   	username
