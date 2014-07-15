@@ -11,7 +11,12 @@
 	  <% if signed_in? %>
       Welcome <%= current_user.username %>
       <%= link_to "Sign out", session_path, method: :delete %>
-    
+        <div class="input-box">
+          <%= form_for(@shout) do |form| %>
+            <%= form.text_field :body %>
+            <%= form.submit "SHOUT" %>
+          <% end %>
+        </div>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Sign in", new_session_path %>

@@ -1,10 +1,6 @@
 
-<%= form_for(@shout) do |form| %>
- <%= form.text_field :body %>
- <%= form.submit "SHOUT" %>
-<% end %>
 
-<h1>Dashboardt</h1> 
+<h1>Dashboard</h1> 
 
 <h3> Following </h3>
 <%= render current_user.followed_users %>
@@ -12,7 +8,7 @@
 <h3> Followed by </h3>
 <%= render current_user.followers %>
 
+<h3> Shouts </h3> 
 <div id="timeline">
 <%= render @shouts %>
 
-</div>
